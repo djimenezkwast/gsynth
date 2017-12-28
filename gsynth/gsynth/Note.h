@@ -1,8 +1,5 @@
 #pragma once
-enum class PitchClass
-{
-	C, Cs, D, Ds, E, F, Fs, G, Gs, A, As, B
-};
+#include "PitchClass.h"
 
 
 class Note

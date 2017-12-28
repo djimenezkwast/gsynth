@@ -11,7 +11,7 @@ Note::Note(PitchClass pitchClass, int octave)
 	, mFrequency(0.0)
 {
 	assert(octave > -1 && "octave is negative");
-	mFrequency = ComputeFrequencyFromA4();
+	mFrequency = ComputeFrequency();
 }
 
 
@@ -38,19 +38,19 @@ double Note::GetFrequency() const
 }
 
 
-double Note::ComputeFrequencyFromA4() const
+double Note::ComputeFrequency() const
 {
 	//F_n = F0 * 2^(n/12)
-	double semitonalDistance = SemitonalDistanceFromA4();
+	double semitonalDistance = ComputeSemitonalDistanceFromA4();
 	return 440.0 * pow(2, semitonalDistance / 12);
 }
 
 
-int Note::SemitonalDistanceFromA4() const
+int Note::ComputeSemitonalDistanceFromA4() const
 {
 	// 440hz is baseline, so distance is calculated from A in fourth octave
-	auto pcDistance = static_cast<int>(mPitchClass) - static_cast<int>(PitchClass::A);
+	auto pitchClassDistance = static_cast<int>(mPitchClass) - static_cast<int>(PitchClass::A);
 	auto octaveDistance = mOctave - 4;
 
-	return pcDistance + octaveDistance * 12;
+	return pitchClassDistance + octaveDistance * 12;
 }

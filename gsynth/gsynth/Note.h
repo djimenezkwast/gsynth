@@ -16,8 +16,8 @@ public:
 	double GetFrequency() const;
 
 private:
-	double ComputeFrequencyFromA4() const;
-	int SemitonalDistanceFromA4() const;
+	double ComputeFrequency() const;
+	int ComputeSemitonalDistanceFromA4() const;
 
 	PitchClass mPitchClass;
 	int mOctave;

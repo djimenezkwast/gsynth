@@ -2,13 +2,13 @@
 //
 
 #include "stdafx.h"
-
-#include <iostream>
+#include "ConsoleTrainer.h"
 
 
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
+	ConsoleTrainer consoleTrainer;
+	consoleTrainer.Run();
     return 0;
 }
 

@@ -3,6 +3,9 @@
 
 #include <random>
 #include <ctime>
+#include <string>
+#include <iostream>
+
 
 
 ConsoleTrainer::ConsoleTrainer()
@@ -23,15 +26,20 @@ void ConsoleTrainer::Run()
 		srand(time(NULL));
 
 		Note note = GenerateRandomNote();
+		std::cout << PitchClassUtils::GetPitchClassLabel(note.GetPitchClass());
 		//Generate random note 
 		//Print (for now)
 
+		std::string userInput;
+		std::cin >> userInput;
 		//Read User input
 		//Provide feedback
 
 		//Loop or terminate
+		running = false;
 	}
 }
+
 
 Note ConsoleTrainer::GenerateRandomNote() const
 {

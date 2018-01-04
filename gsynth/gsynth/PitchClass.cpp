@@ -24,7 +24,7 @@ namespace PitchClassUtils
 		}
 		else 
 		{
-			auto distance = std::distance(PITCH_CLASS_LABELS.begin(), it);
+			const auto distance = std::distance(PITCH_CLASS_LABELS.begin(), it);
 			return static_cast<PitchClass>(distance);
 		}
 	}

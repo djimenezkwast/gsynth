@@ -7,7 +7,6 @@ class ConsoleTrainer
 {
 public:
 	ConsoleTrainer();
-	~ConsoleTrainer();
 
 	void Run();
 

@@ -6,7 +6,6 @@ class Note
 {
 public:
 	Note(PitchClass pitchClass, int octave);
-	~Note();
 
 	PitchClass GetPitchClass() const;
 	int GetOctave() const;

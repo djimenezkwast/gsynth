@@ -13,11 +13,6 @@ ConsoleTrainer::ConsoleTrainer()
 }
 
 
-ConsoleTrainer::~ConsoleTrainer()
-{
-}
-
-
 void ConsoleTrainer::Run()
 {
 	bool running = true;
@@ -25,7 +20,7 @@ void ConsoleTrainer::Run()
 	{
 		srand(time(NULL));
 
-		Note note = GenerateRandomNote();
+		const Note note = GenerateRandomNote();
 		std::cout << PitchClassUtils::GetPitchClassLabel(note.GetPitchClass());
 		//Generate random note 
 		//Print (for now)

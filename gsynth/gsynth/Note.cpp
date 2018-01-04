@@ -15,11 +15,6 @@ Note::Note(PitchClass pitchClass, int octave)
 }
 
 
-Note::~Note()
-{
-}
-
-
 PitchClass Note::GetPitchClass() const
 {
 	return mPitchClass;
@@ -41,7 +36,7 @@ double Note::GetFrequency() const
 double Note::ComputeFrequency() const
 {
 	//F_n = F0 * 2^(n/12)
-	double semitonalDistance = ComputeSemitonalDistanceFromA4();
+	const double semitonalDistance = ComputeSemitonalDistanceFromA4();
 	return 440.0 * pow(2, semitonalDistance / 12);
 }
 
@@ -49,8 +44,8 @@ double Note::ComputeFrequency() const
 int Note::ComputeSemitonalDistanceFromA4() const
 {
 	// 440hz is baseline, so distance is calculated from A in fourth octave
-	auto pitchClassDistance = static_cast<int>(mPitchClass) - static_cast<int>(PitchClass::A);
-	auto octaveDistance = mOctave - 4;
+	const auto pitchClassDistance = static_cast<int>(mPitchClass) - static_cast<int>(PitchClass::A);
+	const auto octaveDistance = mOctave - 4;
 
 	return pitchClassDistance + octaveDistance * 12;
 }

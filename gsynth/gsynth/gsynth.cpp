@@ -7,8 +7,8 @@
 
 int main()
 {
+	using namespace gsynth;
 	ConsoleTrainer consoleTrainer;
 	consoleTrainer.Run();
     return 0;
 }
-

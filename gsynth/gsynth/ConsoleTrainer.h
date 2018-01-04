@@ -3,14 +3,16 @@
 #include "Note.h"
 
 
-class ConsoleTrainer
+namespace gsynth
 {
-public:
-	ConsoleTrainer();
+	class ConsoleTrainer
+	{
+	public:
+		ConsoleTrainer();
 
-	void Run();
+		void Run();
 
-private:
-	Note GenerateRandomNote() const;
-};
-
+	private:
+		Note GenerateRandomNote() const;
+	};
+}

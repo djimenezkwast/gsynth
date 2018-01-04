@@ -5,27 +5,30 @@
 #include <algorithm>
 
 
-namespace PitchClassUtils
+namespace gsynth
 {
-	std::string GetPitchClassLabel(PitchClass pitchClass)
+	namespace PitchClassUtils
 	{
-		assert(pitchClass != PitchClass::END && "specified pitch class has no label");
-		return PITCH_CLASS_LABELS[static_cast<int>(pitchClass)];
-	}
-
-
-	PitchClass GetPitchClassFromLabel(const std::string & label)
-	{
-		auto it = std::find(PITCH_CLASS_LABELS.begin(), PITCH_CLASS_LABELS.end(), label);
-
-		if (it == PITCH_CLASS_LABELS.end())
+		std::string GetPitchClassLabel(PitchClass pitchClass)
 		{
-			return PitchClass::END;
+			assert(pitchClass != PitchClass::END && "specified pitch class has no label");
+			return PITCH_CLASS_LABELS[static_cast<int>(pitchClass)];
 		}
-		else 
+
+
+		PitchClass GetPitchClassFromLabel(const std::string & label)
 		{
-			const auto distance = std::distance(PITCH_CLASS_LABELS.begin(), it);
-			return static_cast<PitchClass>(distance);
+			auto it = std::find(PITCH_CLASS_LABELS.begin(), PITCH_CLASS_LABELS.end(), label);
+
+			if (it == PITCH_CLASS_LABELS.end())
+			{
+				return PitchClass::END;
+			}
+			else
+			{
+				const auto distance = std::distance(PITCH_CLASS_LABELS.begin(), it);
+				return static_cast<PitchClass>(distance);
+			}
 		}
 	}
 }

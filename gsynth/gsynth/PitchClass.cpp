@@ -1,34 +1,27 @@
 #include "stdafx.h"
 #include "PitchClass.h"
 
-#include <cassert>
-#include <algorithm>
-
 
 namespace gsynth
 {
-	namespace PitchClassUtils
+	int PitchClass::GetValue() const
 	{
-		std::string GetPitchClassLabel(PitchClass pitchClass)
-		{
-			assert(pitchClass != PitchClass::END && "specified pitch class has no label");
-			return PITCH_CLASS_LABELS[static_cast<int>(pitchClass)];
-		}
+		return mValue;
+	}
 
 
-		PitchClass GetPitchClassFromLabel(const std::string & label)
-		{
-			auto it = std::find(PITCH_CLASS_LABELS.begin(), PITCH_CLASS_LABELS.end(), label);
+	std::string GetPitchClassLabel(PitchClass pitchClass)
+	{
+		const auto it = PITCH_CLASS_TO_LABEL_MAP.find(pitchClass.GetValue());
+		assert(it != PITCH_CLASS_TO_LABEL_MAP.end());
+		return it->second; 
+	}
 
-			if (it == PITCH_CLASS_LABELS.end())
-			{
-				return PitchClass::END;
-			}
-			else
-			{
-				const auto distance = std::distance(PITCH_CLASS_LABELS.begin(), it);
-				return static_cast<PitchClass>(distance);
-			}
-		}
+
+	PitchClass GetPitchClassFromLabel(const std::string& label)
+	{
+		const auto it = LABEL_TO_PITCH_CLASS_MAP.find(label);
+		assert(it != LABEL_TO_PITCH_CLASS_MAP.end());
+		return PitchClass(it->second);	
 	}
 }

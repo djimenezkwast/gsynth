@@ -1,5 +1,6 @@
 #pragma once
 #include "PitchClass.h"
+#include "Octave.h"
 
 
 namespace gsynth
@@ -7,10 +8,10 @@ namespace gsynth
 	class Note
 	{
 	public:
-		Note(PitchClass pitchClass, int octave);
+		Note(PitchClass pitchClass, Octave octave);
 
 		PitchClass GetPitchClass() const;
-		int GetOctave() const;
+		Octave GetOctave() const;
 		double GetFrequency() const;
 
 	private:
@@ -18,7 +19,7 @@ namespace gsynth
 		int ComputeSemitonalDistanceFromA4() const;
 
 		PitchClass mPitchClass;
-		int mOctave;
+		Octave mOctave;
 		double mFrequency;
 	};
 }

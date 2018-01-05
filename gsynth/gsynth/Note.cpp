@@ -1,18 +1,16 @@
 #include "stdafx.h"
 #include "Note.h"
 
-#include <cassert>
 #include <cmath>
 
 
 namespace gsynth
 {
-	Note::Note(PitchClass pitchClass, int octave)
+	Note::Note(PitchClass pitchClass, Octave octave)
 		: mPitchClass(pitchClass)
 		, mOctave(octave)
 		, mFrequency(0.0)
 	{
-		assert(octave > -1 && "octave is negative");
 		mFrequency = ComputeFrequency();
 	}
 
@@ -23,7 +21,7 @@ namespace gsynth
 	}
 
 
-	int Note::GetOctave() const
+	Octave Note::GetOctave() const
 	{
 		return mOctave;
 	}
@@ -37,8 +35,9 @@ namespace gsynth
 
 	double Note::ComputeFrequency() const
 	{
-		//F_n = F0 * 2^(n/12)
 		const double semitonalDistance = ComputeSemitonalDistanceFromA4();
+
+		//F_n = F0 * 2^(n/12)
 		return 440.0 * pow(2, semitonalDistance / 12);
 	}
 
@@ -46,8 +45,8 @@ namespace gsynth
 	int Note::ComputeSemitonalDistanceFromA4() const
 	{
 		// 440hz is baseline, so distance is calculated from A in fourth octave
-		const auto pitchClassDistance = static_cast<int>(mPitchClass) - static_cast<int>(PitchClass::A);
-		const auto octaveDistance = mOctave - 4;
+		const auto pitchClassDistance = mPitchClass.GetValue() - PitchClass::A().GetValue();
+		const auto octaveDistance = mOctave.GetValue() - 4;
 
 		return pitchClassDistance + octaveDistance * 12;
 	}

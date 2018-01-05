@@ -4,7 +4,7 @@
 
 namespace gsynth
 {
-	int Octave::GetValue() const
+	int Octave::GetValue() const noexcept
 	{
 		return mValue;
 	}

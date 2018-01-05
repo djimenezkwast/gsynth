@@ -8,15 +8,15 @@ namespace gsynth
 	class Note
 	{
 	public:
-		Note(PitchClass pitchClass, Octave octave);
+		Note(PitchClass pitchClass, Octave octave) noexcept;
 
-		PitchClass GetPitchClass() const;
-		Octave GetOctave() const;
-		double GetFrequency() const;
+		PitchClass GetPitchClass() const noexcept;
+		Octave GetOctave() const noexcept;
+		double GetFrequency() const noexcept;
 
 	private:
-		double ComputeFrequency() const;
-		int ComputeSemitonalDistanceFromA4() const;
+		double ComputeFrequency() const noexcept;
+		int ComputeSemitonalDistanceFromA4() const noexcept;
 
 		PitchClass mPitchClass;
 		Octave mOctave;

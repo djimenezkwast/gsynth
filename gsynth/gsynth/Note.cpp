@@ -6,7 +6,7 @@
 
 namespace gsynth
 {
-	Note::Note(PitchClass pitchClass, Octave octave)
+	Note::Note(PitchClass pitchClass, Octave octave) noexcept
 		: mPitchClass(pitchClass)
 		, mOctave(octave)
 		, mFrequency(0.0)
@@ -15,25 +15,25 @@ namespace gsynth
 	}
 
 
-	PitchClass Note::GetPitchClass() const
+	PitchClass Note::GetPitchClass() const noexcept
 	{
 		return mPitchClass;
 	}
 
 
-	Octave Note::GetOctave() const
+	Octave Note::GetOctave() const noexcept
 	{
 		return mOctave;
 	}
 
 
-	double Note::GetFrequency() const
+	double Note::GetFrequency() const noexcept
 	{
 		return mFrequency;
 	}
 
 
-	double Note::ComputeFrequency() const
+	double Note::ComputeFrequency() const noexcept
 	{
 		const double semitonalDistance = ComputeSemitonalDistanceFromA4();
 
@@ -42,7 +42,7 @@ namespace gsynth
 	}
 
 
-	int Note::ComputeSemitonalDistanceFromA4() const
+	int Note::ComputeSemitonalDistanceFromA4() const noexcept
 	{
 		// 440hz is baseline, so distance is calculated from A in fourth octave
 		const auto pitchClassDistance = mPitchClass.GetValue() - PitchClass::A().GetValue();

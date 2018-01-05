@@ -9,11 +9,6 @@
 
 namespace gsynth
 {
-	ConsoleTrainer::ConsoleTrainer()
-	{
-	}
-
-
 	void ConsoleTrainer::Run()
 	{
 		bool running = true;
@@ -22,7 +17,7 @@ namespace gsynth
 			srand(time(NULL));
 
 			const Note note = GenerateRandomNote();
-			std::cout << PitchClassUtils::GetPitchClassLabel(note.GetPitchClass());
+			std::cout << GetPitchClassLabel(note.GetPitchClass());
 			//Generate random note 
 			//Print (for now)
 
@@ -39,7 +34,7 @@ namespace gsynth
 
 	Note ConsoleTrainer::GenerateRandomNote() const
 	{
-		auto randomNum = rand() % static_cast<int>(PitchClass::END);
-		return Note(static_cast<PitchClass>(randomNum), 4);
+		const auto randomNum = rand() % 12;
+		return Note(PitchClass(randomNum), Octave(4));
 	}
 }

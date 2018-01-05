@@ -4,7 +4,7 @@
 
 namespace gsynth
 {
-	int PitchClass::GetValue() const
+	int PitchClass::GetValue() const noexcept
 	{
 		return mValue;
 	}

@@ -8,8 +8,6 @@ namespace gsynth
 	class ConsoleTrainer
 	{
 	public:
-		ConsoleTrainer();
-
 		void Run();
 
 	private:

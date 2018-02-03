@@ -1,5 +1,5 @@
 #pragma once
-#include <cassert>
+#include <stdexcept>
 
 
 namespace gsynth
@@ -7,13 +7,20 @@ namespace gsynth
 	class Octave
 	{
 	public:
-		explicit constexpr Octave(int value) noexcept
+		explicit constexpr Octave(int value)
 			: mValue(value)
 		{
-			assert(value > 0); // No upper bound for now
-		};
+			if (value < 0 || value > 8)
+			{
+				throw std::invalid_argument("invalid Octave value passed to ctor");
+			}
+		}
 
-		int GetValue() const noexcept;
+		constexpr int GetValue() const noexcept 
+		{
+			return mValue;
+		}
+
 	private:
 		int mValue;
 	};

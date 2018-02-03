@@ -36,6 +36,9 @@
     <ClInclude Include="Octave.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constexpr_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -47,13 +50,7 @@
     <ClCompile Include="ConsoleTrainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Note.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PitchClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Octave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,24 +4,18 @@
 
 namespace gsynth
 {
-	int PitchClass::GetValue() const noexcept
+	PitchClass PitchClassFromLabel(const std::string& label)
 	{
-		return mValue;
-	}
+		const auto compare = [&label](const PitchClassLabel& pcl) { return pcl.GetContent() == label; };
+		const auto result = std::find_if(PITCHCLASS_LABELS.begin(), PITCHCLASS_LABELS.end(), compare);
 
+		if (result == PITCHCLASS_LABELS.end())
+		{
+			// cannot find label
+			throw std::invalid_argument("no PitchClass exists for the specified label");
+		}
 
-	std::string GetPitchClassLabel(PitchClass pitchClass)
-	{
-		const auto it = PITCH_CLASS_TO_LABEL_MAP.find(pitchClass.GetValue());
-		assert(it != PITCH_CLASS_TO_LABEL_MAP.end());
-		return it->second; 
-	}
-
-
-	PitchClass GetPitchClassFromLabel(const std::string& label)
-	{
-		const auto it = LABEL_TO_PITCH_CLASS_MAP.find(label);
-		assert(it != LABEL_TO_PITCH_CLASS_MAP.end());
-		return PitchClass(it->second);	
+		const auto distance = std::distance(PITCHCLASS_LABELS.begin(), result);
+		return PitchClass(distance);
 	}
 }

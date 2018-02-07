@@ -16,7 +16,7 @@ namespace gsynth
 			}
 		}
 
-		constexpr int GetValue() const noexcept 
+		constexpr operator int() const noexcept
 		{
 			return mValue;
 		}

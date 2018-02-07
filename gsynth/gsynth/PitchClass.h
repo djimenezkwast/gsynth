@@ -31,7 +31,7 @@ namespace gsynth
 		static constexpr PitchClass As()	noexcept { return PitchClass(10); }
 		static constexpr PitchClass B()		noexcept { return PitchClass(11); }
 
-		constexpr int GetValue() const noexcept
+		constexpr operator int() const noexcept
 		{
 			return mValue;
 		}
@@ -84,7 +84,7 @@ namespace gsynth
 	
 	constexpr std::string_view GetPitchClassLabel(const PitchClass& pitchClass)
 	{
-		const auto& label = PITCHCLASS_LABELS.at(pitchClass.GetValue());
+		const auto& label = PITCHCLASS_LABELS.at(pitchClass);
 		return std::string_view(label.GetContent(), label.GetSize());
 	}
 

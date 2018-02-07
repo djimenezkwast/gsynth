@@ -37,26 +37,16 @@ namespace gsynth
 
 		constexpr double Note::ComputeFrequency() const noexcept
 		{
-			const auto semitonalDistance = ComputeSemitonalDistanceFromA4();
+			// 440hz is baseline, so distance is calculated from A in fourth octave
+			const auto semitonalDistanceToA4 = mPitchClass - PitchClass::A() + (mOctave - 4) * 12;
 
+			// F_n = F0 * 2^(n/12) is the frequency definition
+			// Since b^(n/m) = mth_root(b)^n we can do the following
 			// Sources: 
 			//	https://pages.mtu.edu/~suits/NoteFreqCalcs.html
 			//	https://www.rapidtables.com/math/number/exponent/fractional-exponents.html#simplify
 
-			// F_n = F0 * 2^(n/12) is the frequency definition
-			// Since b^(n/m) = mth_root(b)^n we can do the following
-
-			return 440.0 * ipow(TWELFTH_ROOT_OF_TWO, semitonalDistance);
-		}
-
-		constexpr int Note::ComputeSemitonalDistanceFromA4() const noexcept
-		{
-			// 440hz is baseline, so distance is calculated from A in fourth octave
-
-			const auto pitchClassDistance = mPitchClass.GetValue() - PitchClass::A().GetValue();
-			const auto octaveDistance = mOctave.GetValue() - 4;
-
-			return pitchClassDistance + octaveDistance * 12;
+			return 440.0 * ipow(TWELFTH_ROOT_OF_TWO, semitonalDistanceToA4);
 		}
 
 		PitchClass mPitchClass;
@@ -64,5 +54,14 @@ namespace gsynth
 		double mFrequency;
 	};
 
+
+	// Return value can be negative if b has a lower frequency than a
+	constexpr int SemitonalDistance(const Note& a, const Note& b) noexcept
+	{
+		const auto pitchClassDifference = a.GetPitchClass() - b.GetPitchClass();
+		const auto octaveDifference = a.GetOctave() - b.GetOctave();
+
+		return pitchClassDifference + octaveDifference * 12;
+	}
 
 }

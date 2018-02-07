@@ -24,9 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleTrainer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Note.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,9 +42,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gsynth.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleTrainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PitchClass.cpp">

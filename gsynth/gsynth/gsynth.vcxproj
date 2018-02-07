@@ -158,7 +158,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConsoleTrainer.h" />
     <ClInclude Include="constexpr_math.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="Octave.h" />
@@ -167,7 +166,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleTrainer.cpp" />
     <ClCompile Include="gsynth.cpp" />
     <ClCompile Include="PitchClass.cpp" />
     <ClCompile Include="stdafx.cpp">

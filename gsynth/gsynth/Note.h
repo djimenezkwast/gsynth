@@ -32,6 +32,14 @@ namespace gsynth
 			return mFrequency;
 		}
 
+		void Note::Increment(int numSemitones) noexcept
+		{
+			const auto x = mPitchClass + numSemitones;
+			mPitchClass = PitchClass(x % 12);
+			mOctave = Octave(x / 12);
+			mFrequency = ComputeFrequency();
+		}
+
 	private:
 		static constexpr double TWELFTH_ROOT_OF_TWO = 1.0594630943592952646; // https://en.wikipedia.org/wiki/Twelfth_root_of_two
 

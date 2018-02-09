@@ -167,6 +167,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UniformNoteGenerator.h" />
+    <ClInclude Include="Wave.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gsynth.cpp" />

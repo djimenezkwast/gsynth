@@ -12,10 +12,8 @@ namespace gsynth
 		explicit constexpr Note::Note(PitchClass pitchClass, Octave octave) noexcept
 			: mPitchClass(pitchClass)
 			, mOctave(octave)
-			, mFrequency(0.0)
-		{
-			mFrequency = ComputeFrequency();
-		}
+			, mFrequency(ComputeFrequency())
+		{}
 
 		constexpr PitchClass Note::GetPitchClass() const noexcept
 		{

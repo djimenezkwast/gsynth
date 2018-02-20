@@ -9,28 +9,28 @@ namespace gsynth
 	class Note
 	{
 	public:
-		explicit constexpr Note::Note(PitchClass pitchClass, Octave octave) noexcept
+		explicit constexpr Note(PitchClass pitchClass, Octave octave) noexcept
 			: mPitchClass(pitchClass)
 			, mOctave(octave)
 			, mFrequency(ComputeFrequency())
 		{}
 
-		constexpr PitchClass Note::GetPitchClass() const noexcept
+		constexpr PitchClass GetPitchClass() const noexcept
 		{
 			return mPitchClass;
 		}
 
-		constexpr Octave Note::GetOctave() const noexcept
+		constexpr Octave GetOctave() const noexcept
 		{
 			return mOctave;
 		}
 
-		constexpr double Note::GetFrequency() const noexcept
+		constexpr double GetFrequency() const noexcept
 		{
 			return mFrequency;
 		}
 
-		void Note::Increment(int numSemitones) noexcept
+		void Increment(int numSemitones) noexcept
 		{
 			const auto x = mPitchClass + numSemitones;
 			mPitchClass = PitchClass(x % 12);
@@ -41,7 +41,7 @@ namespace gsynth
 	private:
 		static constexpr double TWELFTH_ROOT_OF_TWO = 1.0594630943592952646; // https://en.wikipedia.org/wiki/Twelfth_root_of_two
 
-		constexpr double Note::ComputeFrequency() const noexcept
+		constexpr double ComputeFrequency() const noexcept
 		{
 			// 440hz is baseline, so distance is calculated from A in fourth octave
 			const auto semitonalDistanceToA4 = mPitchClass - PitchClass::A() + (mOctave - 4) * 12;

@@ -2,6 +2,13 @@
 
 namespace gsynth
 {
+	template<typename T>
+	constexpr T rcp(T x)
+	{
+		static_assert(std::is_floating_point<T>::value, "x is required to be of floating point type");
+		return 1.0 / x;
+	}
+
 	// Source for constexpr power functions: https://stackoverflow.com/questions/17719674/c11-fast-constexpr-integer-powers
 
 	template<typename T>
@@ -22,12 +29,5 @@ namespace gsynth
 		static_assert(std::is_floating_point<T>::value, "base is required to be of floating point type");
 #pragma warning(suppress: 26472)
 		return exp < 0 ? rcp(ipow(base, static_cast<unsigned int>(-exp))) : ipow(base, static_cast<unsigned int>(exp));
-	}
-
-	template<typename T>
-	constexpr T rcp(T x)
-	{
-		static_assert(std::is_floating_point<T>::value, "x is required to be of floating point type");
-		return 1.0 / x;
 	}
 }
